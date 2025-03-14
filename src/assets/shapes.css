@@ -1,0 +1,24 @@
+.shape {
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    border-color: transparent;
+    border-width: 0px;
+    border-style: solid;
+  }
+
+  .shape.square {
+    border-radius: 0;
+  }
+  
+  .shape.circle {
+    border-radius: 50%;
+  }
+  
+  .shape.triangle {
+    clip-path: polygon(0% 0%, 0% 100%, 100% 0%);
+  }
+
+  .shape.hexagon {
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  }
