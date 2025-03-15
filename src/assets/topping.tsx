@@ -1,6 +1,17 @@
 import './shapes.css';
-type ToppingShape = 'circle' | 'square' | 'hexagon' |'triangle';
+import Draggable from 'react-draggable';
 
-export function Topping({ shape }: { shape: ToppingShape }) {
-  return <div className={`shape ${shape}`}></div>; 
+export type ToppingShape = 'circle' | 'square' | 'hexagon' |'triangle';
+type position = { x: number, y: number };
+type ToppingProps = {
+  shape: ToppingShape;
+  position?: position;
+  OnStart?: () => void;
+  OnDrag?: () => void;
+  OnStop?: () => void;
+};
+
+
+export function Topping({ shape, OnStart, OnDrag, OnStop}: ToppingProps ) {
+  return <div className={`shape ${shape}`} /> ; 
 }

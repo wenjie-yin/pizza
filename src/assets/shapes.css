@@ -1,7 +1,9 @@
+@import "tailwindcss";
+
 .shape {
-    width: 100px;
-    height: 100px;
-    background-color: white;
+    width: 30px;
+    height: 30px;
+    @apply bg-sky-400 hover:bg-sky-700;
     border-color: transparent;
     border-width: 0px;
     border-style: solid;
@@ -15,6 +17,8 @@
     border-radius: 50%;
   }
   
+/* TODO: make edges more even */
+  
   .shape.triangle {
     clip-path: polygon(0% 0%, 0% 100%, 100% 0%);
   }
@@ -22,3 +26,7 @@
   .shape.hexagon {
     clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
   }
+
+.quardrant{
+    border-radius: 0% 100% 0% 0%;
+}

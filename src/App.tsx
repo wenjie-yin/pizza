@@ -1,17 +1,32 @@
 import { useState } from 'react'
 import './App.css'
-import {Topping} from './assets/topping'
-
-
-
-
+import {Topping, ToppingShape} from './assets/topping'
 
 function App(){
 
-  return (
-    <Topping shape={'hexagon'}/>
-  )
-}
+  const [toppings, setToppings] = useState([
+    { id: 1, shape: 'circle', position: { x: 0, y: 0 } },
+    { id: 2, shape: 'circle', position: { x: 0, y: 10 } },
+    { id: 3, shape: 'circle', position: { x: 0, y: 20 } },
+    { id: 4, shape: 'circle', position: { x: 0, y: 30 } },
+    { id: 5, shape: 'circle', position: { x: 0, y: 40 } } ]);
 
+    return (
+      <div style={{position: 'relative'}}> 
+        <div className="grid grid-cols-2 place-content-center gap-4 ...">
+          <div>01
+          {toppings.map(topping => (
+            <Topping
+              shape={topping.shape as ToppingShape}
+            />
+          ))}
+          </div>
+          <div>02</div>
+          <div>03</div>
+          <div>04</div>
+      </div>
+    </div>
+    );
+  }
 export default App
  
