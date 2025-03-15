@@ -6,3 +6,26 @@
   padding: 2rem;
   text-align: center;
 }
+
+.quardrant{
+  @apply !flex-grow bg-zinc-500 hover:bg-zinc-700;
+  width: 200px;
+  height: 200px;
+  
+}
+
+.quardrant.tl{
+  border-radius: 100% 0% 0% 0%;
+}
+
+.quardrant.tr{
+  border-radius: 0% 100% 0% 0%;
+}
+
+.quardrant.bl{
+  border-radius: 0% 0% 0% 100%;
+}
+
+.quardrant.br{
+  border-radius: 0% 0% 100% 0%;
+}

@@ -13,17 +13,17 @@ function App(){
 
     return (
       <div style={{position: 'relative'}}> 
-        <div className="grid grid-cols-2 place-content-center gap-4 ...">
-          <div>01
+        <div className="flex grid grid-cols-2 place-content-center gap-4 ...">
+          <div className='quardrant tl'> 01
           {toppings.map(topping => (
             <Topping
               shape={topping.shape as ToppingShape}
             />
           ))}
           </div>
-          <div>02</div>
-          <div>03</div>
-          <div>04</div>
+          <div className='quardrant tr'>02</div>
+          <div className='quardrant bl'>03</div>
+          <div className='quardrant br'>04</div>
       </div>
     </div>
     );
