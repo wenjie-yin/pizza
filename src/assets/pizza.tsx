@@ -18,8 +18,10 @@ export function Pizza( { pizza, toppings } : PizzaProps ) {
       id: pizza.direction,
     });
 
+    const justifyDirection = pizza.direction === 'bl' || pizza.direction === 'br' ? 'justify-start' : 'justify-end' ;
+
     return (
-    <div ref={setNodeRef} className={`quadrant ${pizza.direction} flex flex-col justify-end`}>
+    <div ref={setNodeRef} className={`quadrant ${pizza.direction} flex flex-col ${justifyDirection}`}>
       <div className='grid grid-cols-5'>
         {toppings.map(topping => (
           <Topping topping={topping} /> ))}

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import { Topping, ToppingType, ToppingShape } from './assets/topping'
-import { DndContext } from '@dnd-kit/core'
+import { DndContext, DragEndEvent } from '@dnd-kit/core'
 import { Pizza, PizzaType, PizzaDirection } from './assets/pizza'
 
 const INITIAL_TOPPINGS: ToppingType[] = [
@@ -26,27 +26,52 @@ const shapeToDirectionMap: Record<ToppingShape, PizzaDirection> = {
   'triangle': 'br',
 }
 
+const directionToShapeMap: Record<PizzaDirection, ToppingShape> = {
+  'tl': 'circle',
+  'bl': 'square',
+  'tr': 'hexagon',
+  'br': 'triangle',
+}
+
 function App(){
 
   const [toppings, setToppings] = useState(INITIAL_TOPPINGS);
 
   // TODO: handle drop end
 
-    return (
-      <div> 
-        <div className="flex grid grid-cols-2 place-content-center gap-4 ...">
-        <DndContext>
-          {PIZZAS.map((pizza)=> (
-            <Pizza pizza={pizza}
-              toppings={
-                toppings.filter((topping) => 
-                  shapeToDirectionMap[topping.shape] === pizza.direction) } 
-                />
-          ))}
-        </DndContext>
-      </div>
-    </div>
-    );
+  function handleDragEnd(event: DragEndEvent){
+    const {active, over} = event;
+
+    if (!over) return;
+
+    const toppingId = active.id as number;
+    const destinationId = over.id as PizzaDirection;
+
+    setToppings( () => 
+      toppings.map((topping) => 
+        topping.id === toppingId ? {
+          ...topping, shape: directionToShapeMap[destinationId]
+        } :
+        topping 
+      )
+    )
   }
+
+  return (
+    <div> 
+      <div className="flex grid grid-cols-2 place-content-center gap-4">
+      <DndContext onDragEnd={handleDragEnd}>
+        {PIZZAS.map((pizza)=> (
+          <Pizza pizza={pizza}
+            toppings={
+              toppings.filter((topping) => 
+                shapeToDirectionMap[topping.shape] === pizza.direction) } 
+              />
+        ))}
+      </DndContext>
+    </div>
+  </div>
+  );
+}
 export default App
  
