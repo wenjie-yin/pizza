@@ -5,11 +5,11 @@ import { DndContext } from '@dnd-kit/core'
 import { Pizza, PizzaType, PizzaDirection } from './assets/pizza'
 
 const INITIAL_TOPPINGS: ToppingType[] = [
-  { id: 1, shape: 'circle', position: { x: 0, y: 0 } },
-  { id: 2, shape: 'circle', position: { x: 10, y: 0 } },
-  { id: 3, shape: 'circle', position: { x: 20, y: 0 } },
-  { id: 4, shape: 'circle', position: { x: 30, y: 0 } },
-  { id: 5, shape: 'circle', position: { x: 40, y: 0 } },
+  { id: 1, shape: 'circle'},
+  { id: 2, shape: 'circle'},
+  { id: 3, shape: 'circle'},
+  { id: 4, shape: 'circle'},
+  { id: 5, shape: 'circle'},
 ]
 
 const PIZZAS: PizzaType[] = [
@@ -33,7 +33,7 @@ function App(){
   // TODO: handle drop end
 
     return (
-      <div style={{position: 'relative'}}> 
+      <div> 
         <div className="flex grid grid-cols-2 place-content-center gap-4 ...">
         <DndContext>
           {PIZZAS.map((pizza)=> (

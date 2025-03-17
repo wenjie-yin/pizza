@@ -19,10 +19,11 @@ export function Pizza( { pizza, toppings } : PizzaProps ) {
     });
 
     return (
-    <div ref={setNodeRef} className={`quadrant ${pizza.direction}`}>
-      {toppings.map(topping => ( // should be after filtering
-        <Topping topping={topping} />
-      ))}
+    <div ref={setNodeRef} className={`quadrant ${pizza.direction} flex flex-col justify-end`}>
+      <div className='grid grid-cols-5'>
+        {toppings.map(topping => (
+          <Topping topping={topping} /> ))}
+      </div>
     </div>
   )
 }
