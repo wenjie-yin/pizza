@@ -19,13 +19,6 @@ const PIZZAS: PizzaType[] = [
   { direction: 'br' },
 ]
 
-const shapeToDirectionMap: Record<ToppingShape, PizzaDirection> = {
-  'circle': 'tl',
-  'square': 'bl',
-  'hexagon': 'tr',
-  'triangle': 'br',
-}
-
 const directionToShapeMap: Record<PizzaDirection, ToppingShape> = {
   'tl': 'circle',
   'bl': 'square',
@@ -36,8 +29,6 @@ const directionToShapeMap: Record<PizzaDirection, ToppingShape> = {
 function App(){
 
   const [toppings, setToppings] = useState(INITIAL_TOPPINGS);
-
-  // TODO: handle drop end
 
   function handleDragEnd(event: DragEndEvent){
     const {active, over} = event;
@@ -65,7 +56,7 @@ function App(){
           <Pizza pizza={pizza}
             toppings={
               toppings.filter((topping) => 
-                shapeToDirectionMap[topping.shape] === pizza.direction) } 
+                directionToShapeMap[pizza.direction] === topping.shape) } 
               />
         ))}
       </DndContext>
