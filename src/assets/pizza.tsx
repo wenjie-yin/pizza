@@ -1,8 +1,10 @@
 import { Topping, ToppingType } from './topping'
 import { useDroppable } from  '@dnd-kit/core'
 
+export type PizzaDirection = 'tl' | 'tr' | 'bl' | 'br';
+
 export type PizzaType = {  
-  direction: string;
+  direction: PizzaDirection;
 }
 
 type PizzaProps = {
