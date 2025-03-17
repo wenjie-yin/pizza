@@ -1,20 +1,25 @@
-import { Topping, ToppingShape } from './topping'
+import { Topping, ToppingType } from './topping'
 import { useDroppable } from  '@dnd-kit/core'
 
-export function Pizza( {direction, toppings} : {direction: string, toppings: any[]} ) {
+export type PizzaType = {  
+  direction: string;
+}
+
+type PizzaProps = {
+  pizza: PizzaType;
+  toppings: ToppingType[];
+}
+
+export function Pizza( { pizza, toppings } : PizzaProps ) {
   
     const {setNodeRef} = useDroppable({
-      id: direction,
+      id: pizza.direction,
     });
 
     return (
-    <div ref={setNodeRef} className={`quadrant ${direction}`}>
+    <div ref={setNodeRef} className={`quadrant ${pizza.direction}`}>
       {toppings.map(topping => ( // should be after filtering
-        <Topping
-          id={topping.id}
-          shape={topping.shape as ToppingShape}
-          position={topping.position}
-        />
+        <Topping topping={topping} />
       ))}
     </div>
   )
