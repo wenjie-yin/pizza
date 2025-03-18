@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-import { Topping, ToppingType, ToppingShape } from './assets/topping'
+import { ToppingType, ToppingShape } from './assets/topping'
 import { DndContext, DragEndEvent } from '@dnd-kit/core'
 import { Pizza, PizzaType, PizzaDirection } from './assets/pizza'
 

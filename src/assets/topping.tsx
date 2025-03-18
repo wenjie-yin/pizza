@@ -4,8 +4,6 @@ import { CSS } from '@dnd-kit/utilities';
 
 export type ToppingShape = 'circle' | 'square' | 'hexagon' |'triangle';
 
-type position = { x: number, y: number };
-
 export type ToppingType = {
   id: number;
   shape: ToppingShape;
